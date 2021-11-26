@@ -1,0 +1,45 @@
+#body {
+    height:70vh;
+    justify-content: space-between;
+}
+
+.row {
+    height: 100%;
+    justify-content: space-between;
+}
+
+.col-lg-8 {
+    height: 100%;
+}
+
+.middle-col {
+    width: 80%;
+    height: 100%;
+}
+
+.card {
+    height: 90%;
+    /*box-sizing: border-box;*/
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-hr {
+    margin-left: 0;
+    margin-right: 0;
+    width: 75%;
+}
+
+.card-text {
+    flex-basis: 40%;
+}
+
+.card-header, .card-footer {
+    user-select: none;
+    cursor: pointer;
+}

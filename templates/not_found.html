@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block head %}
+    {{super()}}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/not_found.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="NotFound">
+        <div class="NotFoundBody">
+            <h1>Error: 404</h1>
+            <h3>Not found</h3>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='{{ url_for('home.home') }}'">Go to home page</button>
+        </div>
+    </div>
+{% endblock %}
+
+<!-- /404 -->

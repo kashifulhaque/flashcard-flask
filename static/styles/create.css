@@ -1,0 +1,25 @@
+.bi.hidden {
+    visibility: hidden;
+}
+
+th:hover .bi.hidden {
+    visibility: visible;
+    margin: 0 auto;
+    display: block;
+    /*width: 100%*/
+}
+
+td:hover .bi.hidden {
+    visibility: visible;
+    margin: 0 auto;
+    display: block;
+    /*width: 100%*/
+}
+
+#insertCol {
+    margin-left: 25%;
+}
+
+.bi:hover {
+    fill: gray;
+}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{super()}}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/home.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% from 'set-card.html' import card %}
+    {% if not current_user.is_authenticated %}
+        <div class="title-text"><h1>Flash Card Web App</h1></div>
+    {% endif %}
+    {% if current_user.is_authenticated %}
+        <div class="title-text"><h3>My Sets</h3></div>
+        {% if private_sets %}
+            <div class="card-deck text-dark">
+                {% set length = 3 if private_sets|length>3 else private_sets|length %}
+                {% for i in range(length) %}
+                    {{ card(private_sets[i], current_user) }}
+                {% endfor %}
+            </div>
+            {% if private_sets|length>3 %}
+                <a href="{{ url_for('home.my_sets') }}"><p class="text-right mr-3 mt-1">see all</p></a>
+            {% endif %}
+        {% else %}
+            <p class="ml-4">No sets yet! <a href="{{ url_for('home.create_set') }}" class="text-warning">Create one?</a></p>
+        {% endif %}
+    {% endif %}
+    <br>
+    <div class="title-text"><h3>Public Sets</h3></div>
+    {% set length = 6 if public_sets|length>6 else public_sets|length %}
+        <div class="card-deck text-dark">
+            {% for i in range(length) %}
+                {{ card(public_sets[i], users[public_sets[i].user]) }}
+            {% endfor %}
+        </div>
+    {% if public_sets|length>6 %}
+        <a href="{{ url_for('home.public_sets') }}"><p class="text-right mr-3 mt-1">see all</p></a>
+    {% endif %}
+{% endblock %}
+
+<!-- /home -->

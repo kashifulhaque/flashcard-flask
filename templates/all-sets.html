@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block head %}
+    {{super()}}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/home.css') }}">
+{% endblock %}
+
+{% set title = "Public Sets" if public else "My Sets" %}
+{% block body %}
+    {% from 'set-card.html' import card %}
+    <div class="title-text text-light"><h1>{{ title }}</h1></div>
+        <div class="card-deck text-dark">
+            {% for set in sets %}
+                {{ card(set, users[set.user]) }}
+            {% endfor %}
+        </div>
+{% endblock %}
+
+<!-- /publicsets -->
